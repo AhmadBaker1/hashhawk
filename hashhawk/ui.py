@@ -1,15 +1,17 @@
-# === hashhawk/ui.py ===
 import os
 import sys
-import hashlib
-import streamlit as st
-from hashhawk.utils import detect_hash_type
-from hashhawk.cracker import crack_md5_list, crack_sha1_list, crack_sha256_list
 
-# Ensure project root is on Python path
+# 1️⃣ Path-hack: Insert the project root before any hashhawk imports
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
+
+# 2️⃣ Now it’s safe to import your toolkit and other libs
+import hashlib
+import streamlit as st
+
+from hashhawk.utils import detect_hash_type
+from hashhawk.cracker import crack_md5_list, crack_sha1_list, crack_sha256_list
 
 # Page configuration
 st.set_page_config(page_title="HashHawk", page_icon="🔐", layout="centered")
